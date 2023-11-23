@@ -1,6 +1,6 @@
 const overlay = document.getElementById('overlay');
 const query = new URLSearchParams(window.location.search);
-let elo = "";
+let elo;
 
 class SoloBoom {
 
@@ -31,7 +31,7 @@ class SoloBoom {
 
 async function run() {
   try {
-    if (!query.get('streamerName')) return;
+    if (!query.get('streamerName')) return overlay.innerHTML = `Exemplo: ${window.location.hostname}?streamerName=nicklink`;
     const { rankStatus } = await SoloBoom.search_player(query.get('streamerName'));
     overlay.innerHTML = `Elo: ${rankStatus}`;
   } catch (e) {
