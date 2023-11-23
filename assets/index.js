@@ -1,5 +1,6 @@
 const overlay = document.getElementById('overlay');
 const query = new URLSearchParams(window.location.search);
+let elo = "";
 
 class SoloBoom {
 
@@ -13,6 +14,7 @@ class SoloBoom {
 
   static #player_data(player) {
     player.rankStatus = player.rankStatus === ' | 0 LP' ? "MD5" : player.rankStatus;
+    elo = player.rankStatus;
     return player;
   }
 
@@ -34,7 +36,7 @@ async function run() {
     overlay.innerHTML = `Elo: ${rankStatus}`;
   } catch (e) {
     if (e.message == "no_player") return overlay.innerHTML = `${query.get('streamerName')} não está participando do SoloBoom`;
-    return overlay.innerHTML = e.message;
+    return overlay.innerHTML = `Elo: ${rankStatus}`;
   };
 };
 
