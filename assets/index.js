@@ -36,7 +36,7 @@ async function run() {
     overlay.innerHTML = `Elo: ${rankStatus}`;
   } catch (e) {
     if (e.message == "no_player") return overlay.innerHTML = `${query.get('streamerName')} não está participando do SoloBoom`;
-    return overlay.innerHTML = `Elo: ${rankStatus}`;
+    return overlay.innerHTML = `Elo: ${elo}`;
   };
 };
 
